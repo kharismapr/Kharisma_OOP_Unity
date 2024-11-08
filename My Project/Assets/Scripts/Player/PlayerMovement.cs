@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 stopFriction;
     private Rigidbody2D rb;
 
+    // Tambahkan referensi kamera dan batas layar
+    private Camera mainCamera;
+    private Vector2 screenBounds;
+
     private void Start()
     {
         // Mengambil komponen Rigidbody2D
@@ -24,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
         moveVelocity = 2 * maxSpeed / timeToFullSpeed;
         moveFriction = -2 * maxSpeed / (timeToFullSpeed * timeToFullSpeed);
         stopFriction = -2 * maxSpeed / (timeToStop * timeToStop);
+
+        // Inisialisasi main camera dan batas layar
+        mainCamera = Camera.main;
+        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
     }
 
     public void Move()
@@ -51,8 +59,10 @@ public class PlayerMovement : MonoBehaviour
         currentVelocity.x = Mathf.Clamp(currentVelocity.x, -stopClamp.x, stopClamp.x);
         currentVelocity.y = Mathf.Clamp(currentVelocity.y, -stopClamp.y, stopClamp.y);
 
-
         rb.velocity = currentVelocity;
+
+        // Panggil MoveBound untuk membatasi posisi pemain
+        MoveBound();
     }
 
     public Vector2 GetFriction()
@@ -68,7 +78,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveBound()
     {
-        // sementara dikosongkan dulu
+        Vector3 pos = transform.position;
+
+        // Mendapatkan ukuran collider objek
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        float objectWidth = boxCollider.size.x / 2;
+        float objectHeight = boxCollider.size.y / 2;
+
+        // Membatasi posisi objek agar tidak keluar dari layar
+        pos.x = Mathf.Clamp(pos.x, -screenBounds.x + objectWidth, screenBounds.x - objectWidth);
+        pos.y = Mathf.Clamp(pos.y, -screenBounds.y + objectHeight, screenBounds.y - objectHeight);
+
+        transform.position = pos;
     }
 
     public bool IsMoving()
