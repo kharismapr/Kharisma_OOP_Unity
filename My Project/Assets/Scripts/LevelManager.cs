@@ -7,11 +7,16 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Animator animator; // animator untuk transisi scene
 
+    void Awake()
+    {
+        animator.enabled = false;
+    }
     // Coroutine untuk memuat scene
     private IEnumerator LoadSceneAsync(string sceneName)
     {
             // mulai animasi "End" untuk menandakan transisi
-            animator.SetTrigger("End");
+            animator.enabled = true;
+            // animator.SetTrigger("End");
             yield return new WaitForSeconds(1);
             SceneManager.LoadSceneAsync(sceneName);
             animator.SetTrigger("Start");

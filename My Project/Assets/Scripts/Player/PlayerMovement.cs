@@ -14,10 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveFriction;
     private Vector2 stopFriction;
     private Rigidbody2D rb;
-
+    private Vector2 ppos;
     // Tambahkan referensi kamera dan batas layar
-    private Camera mainCamera;
-    private Vector2 screenBounds;
+    // private Camera mainCamera;
+    // private Vector2 screenBounds;
 
     private void Start()
     {
@@ -29,9 +29,10 @@ public class PlayerMovement : MonoBehaviour
         moveFriction = -2 * maxSpeed / (timeToFullSpeed * timeToFullSpeed);
         stopFriction = -2 * maxSpeed / (timeToStop * timeToStop);
 
-        // Inisialisasi main camera dan batas layar
-        mainCamera = Camera.main;
-        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
+        // // Inisialisasi main camera dan batas layar
+        // mainCamera = Camera.main;
+        // screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
+
     }
 
     public void Move()
@@ -78,18 +79,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveBound()
     {
-        Vector3 pos = transform.position;
-
-        // Mendapatkan ukuran collider objek
-        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        float objectWidth = boxCollider.size.x / 2;
-        float objectHeight = boxCollider.size.y / 2;
-
-        // Membatasi posisi objek agar tidak keluar dari layar
-        pos.x = Mathf.Clamp(pos.x, -screenBounds.x + objectWidth, screenBounds.x - objectWidth);
-        pos.y = Mathf.Clamp(pos.y, -screenBounds.y + objectHeight, screenBounds.y - objectHeight);
-
-        transform.position = pos;
+        ppos = Camera.main.WorldToViewportPoint(transform.position);
+        ppos.x = Mathf.Clamp(ppos.x, 0.01f, 0.99f);
+        ppos.y = Mathf.Clamp(ppos.y, -0.01f, 0.95f);
+        transform.position = Camera.main.ViewportToWorldPoint(ppos) + new Vector3(0, 0, 10);
     }
 
     public bool IsMoving()
