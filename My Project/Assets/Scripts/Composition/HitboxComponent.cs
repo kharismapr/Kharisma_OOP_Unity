@@ -1,31 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class HitboxComponent : MonoBehaviour
 {
-    [SerializeField] private HealthComponent health;
+    [SerializeField]
+    HealthComponent health;
 
-    private void Awake()
+    Collider2D area;
+
+    private InvincibilityComponent invincibilityComponent;
+
+
+    void Start()
     {
-        if (health == null)
-        {
-            health = GetComponent<HealthComponent>();  // ambil HealthComponent dari objek yang sama
-        }
+        area = GetComponent<Collider2D>();
+        invincibilityComponent = GetComponent<InvincibilityComponent>();
     }
 
     public void Damage(Bullet bullet)
     {
-        if (bullet != null)
-        {
+        if (invincibilityComponent != null && invincibilityComponent.isInvincible) return;
+
+        if (health != null)
             health.Subtract(bullet.damage);
-        }
     }
 
     public void Damage(int damage)
     {
-        health.Subtract(damage);
+        if (invincibilityComponent != null && invincibilityComponent.isInvincible) return;
+
+        if (health != null)
+            health.Subtract(damage);
     }
 }
-

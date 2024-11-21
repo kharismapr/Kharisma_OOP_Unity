@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+
 public class Weapon : MonoBehaviour
 {
     [Header("Weapon Stats")]
     [SerializeField] private float shootingInterval = 1f;
 
+
     [Header("Bullets")]
     public Bullet bullet;  
     [SerializeField] private Transform bulletSpawnPoint;  // Tempat Spawn Bullet
+
 
     [Header("Bullet Pool")]
     private IObjectPool<Bullet> objectPool;  // Object Pool untuk Bullet
@@ -18,8 +21,10 @@ public class Weapon : MonoBehaviour
     private readonly int defaultCapacity = 30;
     private readonly int maxSize = 100;
 
+
     private float timer;
     public Transform parentTransform;
+
 
     private void Awake()
     {
@@ -35,6 +40,7 @@ public class Weapon : MonoBehaviour
         );
     }
 
+
     private Bullet CreateBullet()
     {
         // membuat Bullet baru dan menyembunyikannya
@@ -42,6 +48,7 @@ public class Weapon : MonoBehaviour
         newBullet.gameObject.SetActive(false);
         return newBullet;
     }
+
 
     private void OnBulletGet(Bullet bullet)
     {
@@ -57,15 +64,18 @@ public class Weapon : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, bullet.bulletSpeed);
     }
 
+
     private void OnBulletRelease(Bullet bullet)
     {
         bullet.gameObject.SetActive(false);  // menyembunyikan Bullet ketika tidak digunakan
     }
 
+
     private void OnBulletDestroy(Bullet bullet)
     {
         Destroy(bullet.gameObject);  // menghancurkan Bullet
     }
+
 
     private void Update()
     {
@@ -77,14 +87,17 @@ public class Weapon : MonoBehaviour
         }
     }
 
+
     private void Shoot()
     {
         // mendapatkan Bullet dari Object Pool lalu shoot
         Bullet bulletInstance = objectPool.Get();
     }
 
+
     public void ReturnBulletToPool(Bullet bullet) {
         objectPool.Release(bullet);
     }
+
 
 }

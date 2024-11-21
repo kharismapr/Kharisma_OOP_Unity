@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7780771491532029937}
   - component: {fileID: 4950836273801302929}
   - component: {fileID: 8944140648095317965}
+  - component: {fileID: 7034908510339765858}
   m_Layer: 0
   m_Name: EnemyTargeting
   m_TagString: Untagged
@@ -101,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5535326878925313836, guid: 4bb5024c7d7fc584fb8e493488c1959a, type: 3}
+  m_Sprite: {fileID: 3864123506133865018, guid: 1b84cc5dee958664c86fec319ea2a66e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,3 +113,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7034908510339765858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091122301997559453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7b1f073ae46b449ef3e3b1a3f1b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8944140648095317965}
+  damage: 10
+  player: {fileID: 0}
+  speed: 5

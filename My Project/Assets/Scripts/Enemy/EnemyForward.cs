@@ -17,10 +17,10 @@ public class EnemyForward : Enemy
         // Gerakan ke bawah
         transform.Translate(Vector2.down * speed * Time.deltaTime);
 
-        // Hapus object jika keluar layar bawah
-        if (transform.position.y < -6f)
+        // balik arah kalo keluar layar
+        if (transform.position.y < -6f || transform.position.y > 6f)
         {
-            Destroy(gameObject);
+            speed = -speed;
         }
     }
 }

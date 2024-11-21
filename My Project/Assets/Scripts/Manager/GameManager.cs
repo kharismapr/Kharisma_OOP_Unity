@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager Instance { get; private set; }
+
     public LevelManager LevelManager { get; private set; }
 
     void Awake()
@@ -15,14 +13,12 @@ public class GameManager : MonoBehaviour
             Destroy(this);
             return;
         }
-        Instance = this;
-        // Menemukan LevelManager sebagai komponen anak dari GameManager
-        LevelManager = GetComponentInChildren<LevelManager>();
-        // Pastikan GameManager dan Camera tetap ada antar scene
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(GameObject.Find("Player"));
 
+        Instance = this;
+
+        LevelManager = GetComponentInChildren<LevelManager>();
+
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(GameObject.Find("Camera"));
     }
 }
-
-

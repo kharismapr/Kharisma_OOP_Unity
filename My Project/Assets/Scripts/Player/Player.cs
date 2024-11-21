@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     private Animator animator;
 
+
     public static Player Instance { get; private set; }
+    
+
 
     private void Awake()
     {
@@ -23,6 +27,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
         // Mengambil komponen PlayerMovement dan Animator dari objek
@@ -30,11 +35,13 @@ public class Player : MonoBehaviour
         animator = GameObject.Find("EngineEffect").GetComponent<Animator>();
     }
 
+
     private void FixedUpdate()
     {
         // Memanggil method Move dari PlayerMovement untuk menggerakkan player
         playerMovement.Move();
     }
+
 
     private void LateUpdate()
     {

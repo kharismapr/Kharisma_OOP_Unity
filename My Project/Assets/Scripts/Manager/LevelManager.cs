@@ -14,18 +14,16 @@ public class LevelManager : MonoBehaviour
     // Coroutine untuk memuat scene
     private IEnumerator LoadSceneAsync(string sceneName)
     {
-            // mulai animasi "End" untuk menandakan transisi
-            animator.enabled = true;
-            // animator.SetTrigger("End");
-            yield return new WaitForSeconds(1);
-            SceneManager.LoadSceneAsync(sceneName);
-            animator.SetTrigger("Start");
+       // mulai animasi "End" untuk menandakan transisi
+       animator.enabled = true;
 
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null)
-        {
-            player.transform.position = new Vector2(0, -4.5f);
-        }
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadSceneAsync(sceneName);
+
+        animator.SetTrigger("Start");
+
+        Player.Instance.transform.position = new(0, -4.5f);
     }
 
     // fungsi untuk memulai coroutine LoadSceneAsync

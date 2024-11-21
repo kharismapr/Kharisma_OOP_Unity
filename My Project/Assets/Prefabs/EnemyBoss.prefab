@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -509501152328636394}
   - component: {fileID: -3873677744651274341}
   - component: {fileID: 3179826854431856647}
+  - component: {fileID: -4768646887820139981}
+  - component: {fileID: -5915536293621476200}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -104,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5535326878925313836, guid: 4bb5024c7d7fc584fb8e493488c1959a, type: 3}
+  m_Sprite: {fileID: -7996840429828113576, guid: ca390d84e6d5b6443bcad4421474684b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578ddb0c14a8d3f4682a714b54fa80c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1349812234109317725}
+  damage: 10
   speed: 5
   projectile: {fileID: 6845056403694862552, guid: 87fb27911b8a2834eb162d4aacfb0fc6, type: 3}
   shootingInterval: 2
@@ -162,18 +166,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.44444445}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: -0.9545455}
-    oldSize: {x: 0.33333334, y: 0.30555555}
+    pivot: {x: 0.5, y: -0.3068182}
+    oldSize: {x: 1, y: 1.2222222}
     newSize: {x: 1, y: 1.2222222}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33333334, y: 0.30555552}
+  m_Size: {x: 1, y: 1.3}
   m_EdgeRadius: 0
 --- !u!114 &3179826854431856647
 MonoBehaviour:
@@ -187,4 +191,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e77d42efc0b304459d6f540f13ee87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: -4768646887820139981}
+--- !u!114 &-4768646887820139981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8891541930191890160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35f27f4fc374094a8f4a066a1a58b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+--- !u!114 &-5915536293621476200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8891541930191890160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad76ca99bb9a6524ca1e585415b53040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 4857566185358703080, guid: 87fb27911b8a2834eb162d4aacfb0fc6, type: 3}
+  damage: 0
