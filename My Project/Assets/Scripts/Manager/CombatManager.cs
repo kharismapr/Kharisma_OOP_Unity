@@ -12,7 +12,7 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
-        // Mulai sistem wave.
+        // mulai sistem wave otomatis
         StartCoroutine(WaveSystemRoutine());
     }
 
@@ -22,7 +22,7 @@ public class CombatManager : MonoBehaviour
         {
             // tunggu waktu antara wave
             yield return new WaitForSeconds(waveInterval);
-
+            //setelah selesai nunggu, panggil StartWave buat mulai wave baru
             StartWave();
         }
     }
@@ -34,10 +34,10 @@ public class CombatManager : MonoBehaviour
 
         foreach (var spawner in enemySpawners)
         {
-            // Tingkatkan jumlah musuh yang di-spawn sesuai wave.
+            // jumlah musuh yang dispawn sesuai wave
             spawner.spawnCount = spawner.defaultSpawnCount + (spawner.spawnCountMultiplier * waveNumber);
             spawner.isSpawning = true;
-            totalEnemies += spawner.spawnCount;
+            totalEnemies += spawner.spawnCount; //total musuh dari spawnCount
         }
 
         Debug.Log($"Wave {waveNumber}. Total musuh: {totalEnemies}");

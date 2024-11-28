@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    public float maxHealth = 50;
+    public float maxHealth = 100;
     private float health;
 
 

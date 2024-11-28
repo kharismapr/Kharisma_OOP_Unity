@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ChooseWeapon.unity
+    path: Assets/Scenes/ChooseWeapon.unity
     guid: 1c6bba2f521286149990082ac49a8daa
   - enabled: 1
     path: Assets/Scenes/Main.unity

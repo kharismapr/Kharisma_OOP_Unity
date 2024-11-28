@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer)), RequireComponent(typeof(HitboxComponent))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(HitboxComponent))]
 public class InvincibilityComponent : MonoBehaviour
 {
     [SerializeField] private int blinkingCount = 7;
@@ -10,10 +11,8 @@ public class InvincibilityComponent : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
+    private bool isInvincible = false;
 
-    public bool isInvincible = false;
-
-    // Start is called before the first frame update
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -39,9 +38,12 @@ public class InvincibilityComponent : MonoBehaviour
             spriteRenderer.material = originalMaterial;
             yield return new WaitForSeconds(blinkInterval / 2);
         }
-
         spriteRenderer.material = originalMaterial;
-
         isInvincible = false;
+    }
+
+    public bool IsInvincible()
+    {
+        return isInvincible;
     }
 }

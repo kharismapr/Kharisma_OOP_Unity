@@ -7,28 +7,25 @@ public class AttackComponent : MonoBehaviour
     public int damage;
 
     private void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.gameObject.CompareTag(gameObject.tag)) return;
-
-    var hitbox = other.GetComponent<HitboxComponent>();
-    var invincibility = other.GetComponent<InvincibilityComponent>();
-
-    if (hitbox != null)
     {
-        if (bullet != null)
+        //cek klo objek yang tabrakan tag nya beda
+        if (other.gameObject.CompareTag(gameObject.tag)) return;
+
+        if (other.GetComponent<HitboxComponent>() != null)
         {
-            hitbox.Damage(bullet.damage);
-        }
-        else
-        {
+            HitboxComponent hitbox = other.GetComponent<HitboxComponent>();
+
+            if (bullet != null)
+            {
+                hitbox.Damage(bullet.damage);
+            }
+
             hitbox.Damage(damage);
         }
-    }
 
-    if (invincibility != null)
-    {
-        invincibility.TriggerInvincibility();
+        if (other.GetComponent<InvincibilityComponent>() != null)
+        {
+            other.GetComponent<InvincibilityComponent>().TriggerInvincibility();
+        }
     }
-}
-
 }

@@ -3,13 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class HitboxComponent : MonoBehaviour
 {
-    [SerializeField]
-    HealthComponent health;
+    [SerializeField] private HealthComponent health;
 
-    Collider2D area;
-
+    private Collider2D area;
     private InvincibilityComponent invincibilityComponent;
-
 
     void Start()
     {
@@ -19,17 +16,21 @@ public class HitboxComponent : MonoBehaviour
 
     public void Damage(Bullet bullet)
     {
-        if (invincibilityComponent != null && invincibilityComponent.isInvincible) return;
+        if (invincibilityComponent != null && invincibilityComponent.IsInvincible()) return;
 
         if (health != null)
+        {
             health.Subtract(bullet.damage);
+        }
     }
 
     public void Damage(int damage)
     {
-        if (invincibilityComponent != null && invincibilityComponent.isInvincible) return;
+        if (invincibilityComponent != null && invincibilityComponent.IsInvincible()) return;
 
         if (health != null)
+        {
             health.Subtract(damage);
+        }
     }
 }

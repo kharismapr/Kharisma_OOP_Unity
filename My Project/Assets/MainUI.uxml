@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; height: 254px; -unity-font: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=08e799243388b13478f5a125cdb926cb&amp;type=3#NotInter-Regular&quot;); -unity-font-definition: initial; word-spacing: 5px; letter-spacing: 2px; font-size: 25px;">
+        <ui:Label tabindex="-1" text="Health:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Health" style="-unity-text-align: upper-left; width: 199px; -unity-font-style: bold; color: rgb(255, 255, 255); font-size: 25px; left: 20px;" />
+        <ui:Label tabindex="-1" text="Wave:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Wave" style="flex-direction: column; align-items: stretch; -unity-text-align: upper-left; width: 154px; align-self: stretch; left: 1000px; position: absolute; top: 0; -unity-font-style: bold; color: rgb(255, 255, 255); justify-content: flex-end; font-size: 25px; height: 30px;" />
+        <ui:Label tabindex="-1" text="Points:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Points" style="-unity-font-style: bold; color: rgb(255, 255, 255); font-size: 25px; left: 20px; top: auto;" />
+        <ui:Label tabindex="-1" text="Enemies Left:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EnemiesLeft" style="-unity-text-align: upper-left; width: 150px; position: absolute; top: 40px; left: 1000px; -unity-font-style: bold; color: rgb(255, 255, 255); font-size: 25px;" />
+    </ui:VisualElement>
+</ui:UXML>

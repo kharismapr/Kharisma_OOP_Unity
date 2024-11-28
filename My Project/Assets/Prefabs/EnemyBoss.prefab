@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3179826854431856647}
   - component: {fileID: -4768646887820139981}
   - component: {fileID: -5915536293621476200}
+  - component: {fileID: 4649754723351207972}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -219,3 +220,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4857566185358703080, guid: 87fb27911b8a2834eb162d4aacfb0fc6, type: 3}
   damage: 0
+--- !u!114 &4649754723351207972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8891541930191890160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6c1737e787594409535d214df318c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkingCount: 7
+  blinkInterval: 0.1
+  blinkMaterial: {fileID: 2100000, guid: 16b44d8a50300de439a7c052b7a33fe1, type: 2}

@@ -19,6 +19,6 @@ public class GameManager : MonoBehaviour
         LevelManager = GetComponentInChildren<LevelManager>();
 
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(GameObject.Find("Camera"));
+        DontDestroyOnLoad(GameObject.Find("Bullet"));
     }
 }
